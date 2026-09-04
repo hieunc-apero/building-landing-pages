@@ -23,6 +23,26 @@ Verify it landed:
 ls ~/.claude/skills/building-landing-pages
 ```
 
+## Optional: install everything at once
+
+If you would rather not paste thirteen commands, the repo ships a script. Clone it, read the
+script, then run whichever tier you want:
+
+```bash
+git clone https://github.com/hieunc-apero/building-landing-pages && cd building-landing-pages
+./install.sh --dry-run          # print the commands, install nothing
+./install.sh                    # the skill + required dependencies
+./install.sh --recommended      # plus one skill per remaining stage
+./install.sh --all              # plus the optional motion / GPU / ASO set
+```
+
+On Windows: `.\install.ps1`, `.\install.ps1 -Recommended`, `.\install.ps1 -All`, `-DryRun`.
+
+Run `--dry-run` first. Every skill it installs runs with full agent permissions and comes from
+a different third-party repository — you should know what you are agreeing to. The skill itself
+never installs anything on its own: it checks what is present, tells you what is missing, and
+asks.
+
 ## Dependencies — read this before using it
 
 This skill **composes other skills rather than duplicating them**. It calls them by name at

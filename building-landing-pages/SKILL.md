@@ -7,6 +7,23 @@ description: Use when building a marketing website or landing page from scratch 
 
 An 8-stage pipeline distilled from two real builds — a pre-launch company site and a multi-language app landing page — each stage backed by a real skill or a concrete checklist, not vibes.
 
+## Before stage 1 — check what is actually installed
+
+This skill composes skills it does not bundle. A missing one does not error — the stage just
+quietly gets done by hand and nobody is told. Check once per project, before starting:
+
+```bash
+ls ~/.claude/skills/
+```
+
+Compare against the table in [reference/skill-routing.md](reference/skill-routing.md). Tell the
+user which named skills are missing, which stage each one covers, and the exact install command
+— then let them choose.
+
+**Ask before installing anything.** These run with full agent permissions and come from nine
+different third-party repositories; that is the user's call to make, not yours. A missing skill
+is not a blocker either — say which stages will be weaker and carry on.
+
 ## Stages
 
 | # | Stage | Do this | Sub-skill / tool |

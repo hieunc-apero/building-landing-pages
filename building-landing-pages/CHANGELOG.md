@@ -2,6 +2,24 @@
 
 History of `SKILL.md` itself and this skill's own portability. One entry per change to the skill's instructions — append here whenever the pipeline, a stage's checklist, or a cross-referenced skill changes. Not a log of projects built with the skill — see [USELOG.md](USELOG.md) for that.
 
+## v0.7 — 2026-09-04
+
+**Changed:** added a preflight step before stage 1 — list what is installed, name the missing
+skills and the stage each covers, and ask before installing any of them. Shipped optional
+`install.sh` / `install.ps1` at the repo root for people who would rather run one command.
+
+**Why:** the skill names thirteen skills it does not bundle, and the skill format has no way to
+declare a dependency — checked across 35 installed skills, the only frontmatter fields in use are
+`name`, `description`, `license`, `metadata`, `version`, `argument-hint`, `user-invocable` and
+`allowed-tools`, and the CLI has no transitive install. So a recipient missing a dependency got
+no signal at all: the stage silently happened by hand.
+
+Auto-installing was rejected deliberately. The installer prints "they run with full agent
+permissions" on every run, and these come from nine separate third-party repositories — having
+one skill pull all of that in unattended makes the person who trusted this skill carry a supply
+chain they never looked at. Making the gap visible solves the actual problem; the install script
+stays opt-in and user-run.
+
 ## v0.6 — 2026-09-04
 
 **Changed:** moved the stage-indexed skill table and the whole install/portability section out
