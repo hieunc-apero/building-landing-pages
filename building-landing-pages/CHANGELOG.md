@@ -2,6 +2,29 @@
 
 History of `SKILL.md` itself and this skill's own portability. One entry per change to the skill's instructions — append here whenever the pipeline, a stage's checklist, or a cross-referenced skill changes. Not a log of projects built with the skill — see [USELOG.md](USELOG.md) for that.
 
+## v0.8 — 2026-09-04
+
+**Changed:** split `reference/verification-checklist.md` out into its own skill,
+`verifying-landing-pages`, and pointed stage 6 at it as a required sub-skill. Added
+`site-architecture` to stage 2. Dropped the "Why the checklist is shaped the way it is"
+section — its two principles moved into the new skill, where the checks they explain now live.
+
+**Why:** a survey of the skills registry, prompted by asking whether any of this already
+exists. Two findings drove the change.
+
+First, nothing in the registry verifies a landing page. Searching for QA and verification
+skills returns generic checklists under 150 installs, and every landing-page skill checked
+states it does not cover QA, i18n or deploy — including `site-architecture` (100.2K installs),
+`landing-page-conversion-audit` (38.8K, and it needs live traffic data to say anything) and
+`landing-page-generator` (1.5K). The 26 checks were the one genuinely uncontested asset here
+and they were reachable only by installing an entire pipeline. They stand alone: wanting the
+checks does not imply wanting the pipeline.
+
+Second, stage 2 was the weakest stage against the field. `site-architecture` does page
+hierarchy, URL structure, navigation and internal linking properly, and this skill was
+gesturing at all of it in a single sentence. Composing beats restating — the same reason the
+other twelve are named rather than copied.
+
 ## v0.7 — 2026-09-04
 
 **Changed:** added a preflight step before stage 1 — list what is installed, name the missing

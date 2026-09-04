@@ -26,13 +26,16 @@ for arg in "$@"; do
 done
 
 SKILL="hieunc-apero/building-landing-pages@building-landing-pages"
+CHECKS="hieunc-apero/building-landing-pages@verifying-landing-pages"
 
 REQUIRED=(
+  "hieunc-apero/building-landing-pages@verifying-landing-pages||the 26 pre-launch checks (stage 6)"
   "obra/superpowers|-s brainstorming|structure work before building (stage 2)"
   "anthropics/skills@frontend-design||build a page from blank (stage 5)"
   "anthropics/knowledge-work-plugins@ux-copy||every string on the page (stage 5)"
 )
 RECOMMENDED=(
+  "coreyhaines31/marketingskills@site-architecture||hierarchy, URLs, navigation (stage 2)"
   "nextlevelbuilder/ui-ux-pro-max-skill@ui-ux-pro-max||pick a visual direction (stage 3)"
   "pbakaus/impeccable@impeccable||audit an interface that already exists (stage 5)"
   "ibelick/ui-skills@fixing-accessibility||contrast, ARIA, keyboard, focus (stage 6)"

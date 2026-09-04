@@ -1,6 +1,20 @@
-# Verification Checklist
+---
+name: verifying-landing-pages
+description: Use when a marketing site or landing page is about to be called done, merged, or shipped - including before claiming that a build passes, a locale is complete, a deploy is live, or a visual change renders the way the code reads.
+---
 
-Concrete items, extracted from real bugs caught (or almost missed) on two production builds. Run the relevant sections before calling any stage done — this is stage 6 of [SKILL.md](../SKILL.md).
+# Verifying Landing Pages
+
+Checks to run before calling a marketing site or landing page finished. Concrete items,
+extracted from real bugs caught (or almost missed) on two production builds - not a
+generic QA list.
+
+**The one rule underneath all of them: a green exit code is not evidence.** Every item here
+exists because something reported success while the thing that mattered was never observed -
+a CLI returned 0, a page rendered locally, a translation batch "looked complete".
+
+Run the sections that apply. Skip i18n if the site is single-locale; skip Deploy until there
+is something to deploy. An item you skip on purpose is fine; an item you assume is not.
 
 ## Code correctness
 - [ ] Typecheck / build passes clean (`tsc --noEmit`, `next build`, etc.)
@@ -41,3 +55,15 @@ Concrete items, extracted from real bugs caught (or almost missed) on two produc
 
 ## Handoff
 - [ ] Every locked decision (brand token, deferred feature, "why not X") is written to the project's memory/HANDOFF.md, not left only in chat history — a different session or account needs to pick this up without re-deriving it
+
+## If something here fails
+
+Bisect until you can name the one line. The symptom is rarely the bug - a recurring "still
+shows the old logo" turned out to be a cache header, not a wrong file, and a page that "won't
+update" turned out to be serving a build that came from a local upload rather than any commit.
+
+## Related
+
+Part of a larger pipeline for building a marketing site from scratch: `building-landing-pages`
+covers research, structure, brand, the design brief, the build, deploy and handoff, and calls
+this skill at its verification stage. This one stands alone and does not require it.

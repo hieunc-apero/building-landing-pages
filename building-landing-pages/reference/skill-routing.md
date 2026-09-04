@@ -11,6 +11,7 @@ skill you haven't used before, or when a named skill doesn't seem to exist.
 | 1 Research | `extract-design-system` | Pull a competitor's real tokens off their site instead of eyeballing them |
 | 1 Research | `competitor-analysis` | Mobile apps only — the ASO/keyword/store layer, not the visual teardown |
 | 2 Structure | `brainstorming` | Turn research into an approved structure before anything gets built |
+| 2 Structure | `site-architecture` | Page hierarchy, URL structure, navigation, internal linking — deeper than doing it inline |
 | 3 Brand | `ui-ux-pro-max` | Choose the direction: style family, palette, type pairing |
 | 3 Brand | `svg-logo-designer` | The mark itself — variations, layouts, PNG export |
 | 3 Brand | `figma:figma-design-to-code` | Only when an existing Figma source has to be read |
@@ -19,10 +20,12 @@ skill you haven't used before, or when a named skill doesn't seem to exist.
 | 5 Build | `motion-design` + `gsap-*` | How motion should behave, and how to implement it — both, not one or the other |
 | 5 Build | `animate-text` | Named text effects: reveal, typewriter, stagger, counters, text swaps |
 | 5 Build | `shader-glsl` | GPU work only — shader backgrounds, distortion, image transitions |
+| 6 Verify | `verifying-landing-pages` | The 26 checks — build, visual, content integrity, i18n, deploy, handoff |
 | 6 Verify | `fixing-accessibility` | Contrast, ARIA, keyboard nav, focus management, form errors |
 | any | `artifact-design` | When a stage's deliverable is a *proposal to show*, not the final build |
 
-Call these by name — do not copy their content into this skill. They update independently of
+`verifying-landing-pages` ships from the same repository as this skill; the rest are third
+party. Call them all by name — do not copy their content into this skill. They update independently of
 it, and one of them (`impeccable`) is ~40 files on its own.
 
 ## A named skill that "doesn't exist" is usually installed in the wrong scope
