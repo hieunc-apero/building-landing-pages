@@ -61,7 +61,41 @@ anything else:
 ## Content integrity
 - [ ] No fabricated stats, reviews, or testimonials — pull real numbers (App Store API, analytics) or mark placeholder content as visibly placeholder
 - [ ] Brand name/terms consistent everywhere — grep for the old name after any rename, including in code comments and alt text
+- [ ] The page does not contradict itself on any measurable claim — collect every number that describes the same thing (render time, price, limits, counts) and check they agree, including numbers baked into screenshots. One audited page stated its render time four ways: "about twelve seconds" in the hero, `~12s` in the stats, `11s` on a chip, and "Progressing in 15s" inside an image
 - [ ] Copy follows the project's copy rules (see `ux-copy` — no stray em dashes, consistent terms, etc.)
+
+## Conversion path
+
+The page exists to send someone somewhere. Everything above can pass while that fails, and it
+will not look broken: a dead button renders exactly like a live one.
+
+- [ ] **Follow the primary action to its destination and confirm it leaves the page.** Not the
+  first hop — the last. An audited launch page chained hero CTA → `#download` → a section whose
+  own button was `href="#"`. Every CTA resolved; nothing left the page; the App Store link did
+  not exist
+- [ ] No control ships as `href="#"`, an empty `href`, or a handler that does nothing. Count them:
+
+```js
+[...document.querySelectorAll('a')].filter(a => !a.getAttribute('href') || a.getAttribute('href') === '#').length
+// expect 0
+```
+
+- [ ] At least one link actually points off-site when the page's job is off-site (store listing,
+  checkout, signup, calendar). Filter out the ones that don't count:
+
+```js
+[...document.querySelectorAll('a[href^="http"]')]
+  .map(a => a.href)
+  .filter(h => !/fonts\.(googleapis|gstatic)\.com|^\/\//.test(h))
+// expect the destination you are selling
+```
+
+- [ ] Policy and legal links the destination platform requires are **real links that resolve**,
+  not styled text. An app store will reject a submission whose privacy policy is a `<span>` —
+  and a page making claims about biometrics, on-device models or data retention needs the policy
+  those claims refer to
+- [ ] Any form on the page **delivers**, verified by submitting one and finding it at the other
+  end. A 200 response is not delivery
 
 ## i18n (if applicable)
 - [ ] Every locale has 100% key coverage — script-check every key against the source locale, don't spot-check

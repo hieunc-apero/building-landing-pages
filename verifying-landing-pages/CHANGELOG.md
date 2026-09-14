@@ -1,5 +1,34 @@
 # Changelog
 
+## v0.3 - 2026-09-14
+
+**Changed:** added a Conversion path section (4 checks, with runnable snippets) and one
+content-integrity check for a page that contradicts itself on a measurable claim. 30 -> 36.
+
+**Why:** the same page audited for v0.2 was audited again, this time by a dispatched
+read-only agent working from this checklist in a fresh context. It reproduced every finding
+the manual pass had made and returned nine more. One of those nine is the reason this
+section exists:
+
+The page had **no link off itself at all.** Its only purpose is app installs. Seven CTAs
+resolved cleanly, the hero chained to `#download`, and the section it landed on carried a
+button reading "Download on the App Store" with `href="#"`. Nine dead controls in total, and
+zero off-site links once the font preconnects are filtered out. Every one of the 30 checks
+passed over it, because not one of them asked whether the page does the job it exists for.
+
+A dead button renders exactly like a live one, which is why nothing upstream catches this:
+the markup is valid, the anchors resolve, the contrast is measurable, the layout holds. The
+failure is only visible if you follow the primary action to its **last** hop rather than its
+first.
+
+The self-contradiction check came from the same audit: that page stated its render time four
+ways - "about twelve seconds" in the hero, `~12s` in the stats, `11s` on a chip, and
+"Progressing in 15s" inside a screenshot. Three were in the markup and greppable; the fourth
+was pixels.
+
+Both snippets in the new section were run against that page before shipping: 9 dead controls,
+0 off-site links.
+
 ## v0.2 - 2026-09-14
 
 **Changed:** added a precondition section (get the page served over HTTP and assert its
