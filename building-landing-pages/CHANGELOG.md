@@ -2,6 +2,62 @@
 
 History of `SKILL.md` itself and this skill's own portability. One entry per change to the skill's instructions — append here whenever the pipeline, a stage's checklist, or a cross-referenced skill changes. Not a log of projects built with the skill — see [USELOG.md](USELOG.md) for that.
 
+## v0.10 — 2026-09-14
+
+**Changed:** added a "Joining a page that already exists" table, and split stage 3's
+instruction to pull from an existing source into tokens (fine) versus pixels (a licensing
+decision that belongs in the brief).
+
+**Why:** the first real run, logged in [USELOG.md](USELOG.md) — an audit of an existing
+landing page. Two of its four findings land here.
+
+The pipeline had no entry point for work that already exists. Every stage is written to
+follow the one before it, so auditing a page built a month earlier meant improvising a jump
+to stage 6 with nothing in the skill sanctioning it. Most real work is not a blank page. The
+new table keys the entry point to what is actually in the project rather than to an assumed
+starting state, and says explicitly that entering late does not excuse stage 8.
+
+The stage 3 change is preventive. The page audited had taken its five product screenshots
+from another company's Figma file; one of them renders that company's name in body text, and
+a CSS overlay covering a second was one layout change away from exposing it. Stage 3 as
+written invited exactly that — "pull tokens/fonts from that source directly" reads as
+permission to take whatever is in the file. Tokens are a shortcut; pixels are someone's
+property.
+
+`SKILL.md` is now 1187 words, well over the 500 that `writing-skills` targets. The joining
+table is a decision point where a run demonstrably went wrong, which is the one thing that
+skill says to keep inline, so it stays — but the budget is spent and the next addition
+should displace something rather than append to it.
+
+## v0.9 — 2026-09-12
+
+**Changed:** added [reference/review-preferences.md](reference/review-preferences.md) and a
+"What gets work bounced" section pointing at it, plus references from stage 5 and stage 6.
+Ten patterns, each cited to a verbatim correction, and a pre-show checklist.
+
+**Why:** the first long review cycle this skill's evidence base has seen — ~15 rounds on the
+that same web app. Stage 6 passed every time and the work still came back, which says the gap is
+not in the checks but in what the checks are blind to.
+
+One cause dominated. Desktop kept getting built as the phone layout at a bigger size, and it
+was reported four separate times in four different wordings before it stopped
+("giống responsive iPad quá", "chưa optimal cho desktop" ×2, "chưa đủ đẹp"). That is not a
+correctness failure — every one of those pages built, deployed and passed accessibility.
+`verifying-landing-pages` cannot catch it, and should not be asked to: it is a taste contract,
+not a check.
+
+Placed at stage 5 rather than stage 6 deliberately. Every one of those four rounds was a
+rebuild, not a fix — by the time a desktop layout exists and is wrong in this particular way,
+there is nothing to correct, only to redo.
+
+Two things were deliberately left out. Per-project brand taste, because that belongs in the
+stage 4 brief where it can be versioned, not in a skill shared across projects. And the
+subagent baseline the `writing-skills` Iron Law asks for: its own rule says to stop when the
+no-guidance control does not exhibit the failure, and here the control fails trivially — an
+agent with no record of a reviewer's preferences cannot infer them. The test would pass and
+teach nothing. The evidence standard used instead is the one this skill was already built on:
+every claim traces to a real build.
+
 ## v0.8 — 2026-09-04
 
 **Changed:** split `reference/verification-checklist.md` out into its own skill,

@@ -16,6 +16,22 @@ a CLI returned 0, a page rendered locally, a translation batch "looked complete"
 Run the sections that apply. Skip i18n if the site is single-locale; skip Deploy until there
 is something to deploy. An item you skip on purpose is fine; an item you assume is not.
 
+## Before any of this: get the page actually running
+
+These checks are worth nothing against a page whose assets never arrived, and a page in that
+state does not look broken. Opening an HTML file directly - `file://`, or a preview that
+renders it as a `data:` snapshot - silently breaks every relative path inside it. Images
+resolve to nothing, their frames render empty, and the layout around them still reads as
+deliberate. A screenshot-only pass will sign off on it.
+
+Serve it over HTTP from its own directory, then assert the assets arrived before checking
+anything else:
+
+```js
+[...document.images].filter(i => !i.naturalWidth).map(i => i.getAttribute('src'))
+// must return []
+```
+
 ## Code correctness
 - [ ] Typecheck / build passes clean (`tsc --noEmit`, `next build`, etc.)
 - [ ] Lint passes clean
@@ -26,6 +42,19 @@ is something to deploy. An item you skip on purpose is fine; an item you assume 
 - [ ] Verify with a real screenshot or a real pixel measurement (`getBoundingClientRect`, `measureText`) — not by reading the code and assuming it renders as written
 - [ ] Measure the accent colour's contrast **as text**, separately from its contrast as a fill or rule — an accent chosen to sit on a dark ground routinely fails AA the moment someone uses it for a word on a light one (amber `#FFB020` is 10:1 on near-black and 1.83:1 on white). Write down which roles it is allowed in
 - [ ] Check every locale/breakpoint that changed, not just the one you were looking at
+
+> **The hard part of this section is measuring, not judging.** Two traps, both hit in a single
+> real session:
+>
+> - An element whose background is a `linear-gradient` reports
+>   `background-color: rgba(0, 0, 0, 0)`. Walking up the tree looking for a painted colour
+>   lands on the page background and invents a failure that isn't there. Read
+>   `background-image`, measure against the **darkest stop**, and report the range - a button
+>   can pass at 8.8:1 at one end of its gradient and fail at 2.96:1 at the other.
+> - Centring is measured against `document.documentElement.clientWidth`, never `innerWidth`.
+>   `innerWidth` includes the scrollbar, so every block on the page reports the same few
+>   pixels of false offset and the whole run looks broken.
+
 - [ ] `prefers-reduced-motion` / the fully-static fallback still reads correctly with all animation off — this is the design, not a degraded mode
 - [ ] No section is stuck in a pre-animation state (opacity/blur) when scrolled to directly — anchor link, fast scroll, or reload mid-page must all show the final state immediately
 
@@ -51,6 +80,10 @@ is something to deploy. An item you skip on purpose is fine; an item you assume 
 
 ## Assets and licences
 - [ ] Every non-system display face has a **webfont licence**, not just a desktop one — commercial foundries (Klim, Grilli Type, Displaay…) price web use separately and usually by monthly pageviews. This blocks the build at the type layer, so settle it before the design brief locks a face, not at launch
+- [ ] Every asset is **ours, or licensed** - not a screenshot, mockup or export lifted from another product's design file. Ask it of each image: if that company opened this page, would they recognise their own work?
+- [ ] Product screenshots show **our** product. A foreign wordmark or body string baked into a PNG is invisible to every text search you would normally run, and an overlay positioned on top of it breaks the moment the layout moves. Open the images and read them
+- [ ] No identifiable person appears without a release - a face that arrived with a borrowed mockup is a licensing problem, not placeholder content
+- [ ] Copy inside a borrowed asset is now your copy, typos included - proofread the text in the images, not just the markup
 - [ ] Every referenced asset actually exists in the repo — a brand vector cited in a handoff is not the same as a brand vector committed
 
 ## Handoff
