@@ -1,6 +1,6 @@
 ---
 name: verifying-landing-pages
-description: Use when a marketing site or landing page is about to be called done, merged, or shipped - including before claiming that a build passes, a locale is complete, a deploy is live, or a visual change renders the way the code reads.
+description: Use when a marketing site, landing page, or funnel is about to be called done, merged, or shipped - including before claiming that a build passes, a locale is complete, a deploy is live, or a visual change renders the way the code reads.
 ---
 
 # Verifying Landing Pages
@@ -40,6 +40,7 @@ anything else:
 
 ## Visual QA
 - [ ] Verify with a real screenshot or a real pixel measurement (`getBoundingClientRect`, `measureText`) — not by reading the code and assuming it renders as written
+- [ ] No image renders larger than its source. Compare `naturalWidth`/`naturalHeight` against the rendered box for every image (`[...document.images].filter(i => i.naturalWidth && i.getBoundingClientRect().width > i.naturalWidth)`) — anything upscaling is a defect. An asset folder routinely mixes hero art, gallery thumbnails and avatars under one naming scheme and one extension: one real set ran 786×1458, 188×282 and 400×545 side by side, all `*.webp`, all `tile`/`hero`-ish names. The 188px one filled a 431px frame and read as mush at a glance but "loaded fine" to every check that only asks whether the file 404s
 - [ ] Measure the accent colour's contrast **as text**, separately from its contrast as a fill or rule — an accent chosen to sit on a dark ground routinely fails AA the moment someone uses it for a word on a light one (amber `#FFB020` is 10:1 on near-black and 1.83:1 on white). Write down which roles it is allowed in
 - [ ] Check every locale/breakpoint that changed, not just the one you were looking at
 

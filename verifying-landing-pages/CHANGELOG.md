@@ -1,5 +1,38 @@
 # Changelog
 
+## v0.5 - 2026-09-16
+
+**Changed:** `description` — "a marketing site, landing page, or funnel".
+
+**Why:** same routing audit as `building-landing-pages` v0.12. This description was already the
+better of the two — "before claiming that ... a visual change renders the way the code reads"
+describes the run it missed almost exactly — but the noun list gated it. A multi-step funnel
+with upload, paywall and checkout screens does not obviously read as a marketing site or a
+landing page, so the skill was not reached for on a session that spent most of its time doing
+precisely what this file is for.
+
+Worth noting what that cost and what it did not: the run's verification was done by measurement
+rather than by screenshot anyway, and caught four render bugs the screenshots had hidden. The
+discipline survived without the checklist. The specific items did not — an upscaled image
+shipped, and the client found it.
+
+## v0.4 - 2026-09-16
+
+**Changed:** one Visual QA check — no image may render larger than its source. 36 -> 37.
+
+**Why:** a port of a live funnel to desktop. The source project's asset folder held hero
+photography at 786x1458, gallery thumbnails at 188x282 and review portraits at 400x545, all
+`*.webp`, all under the same two directories, all named to the same scheme. Three of the
+rebuilt screens were given a thumbnail as their full-height stage image, upscaled ~2.7x.
+
+Every check in this file passed on it. The files existed, they returned 200, they were the
+right images, the layout measured correctly, contrast was fine. Nothing here asks whether an
+image is being *stretched* — the page just looked slightly soft, which is exactly the failure
+mode that survives a screenshot pass and gets caught by the client instead.
+
+The check is a one-liner over `document.images` comparing `naturalWidth` to the rendered box,
+so it costs nothing to run and needs no judgement call: any ratio above 1 is a defect.
+
 ## v0.3 - 2026-09-14
 
 **Changed:** added a Conversion path section (4 checks, with runnable snippets) and one

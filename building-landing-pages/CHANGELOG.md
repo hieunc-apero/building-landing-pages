@@ -2,6 +2,59 @@
 
 History of `SKILL.md` itself and this skill's own portability. One entry per change to the skill's instructions — append here whenever the pipeline, a stage's checklist, or a cross-referenced skill changes. Not a log of projects built with the skill — see [USELOG.md](USELOG.md) for that.
 
+## v0.12 — 2026-09-16
+
+**Changed:** the `description`. It now covers reworking an existing page, names the funnel case,
+and says the pipeline is entered at whichever stage the work actually starts — rather than
+"from scratch ... from research and brand through build".
+
+**Why:** this skill is at v0.12 with **one** entry in [USELOG.md](USELOG.md). Eleven revisions,
+one real run. The second entry, added today, is a run where the skill never loaded at all.
+
+Every one of those revisions edited the body. The body is only read once the skill has already
+been selected, and selection reads nothing but the description — which carried three gates that
+between them excluded most real work: "from scratch" ruled out anything that already exists,
+"marketing website or landing page" ruled out funnels and app flows, and "from research and
+brand through build" implied a full eight-stage run so a job starting at build or verify did
+not look like a match.
+
+v0.10 is the sharpest illustration. It correctly diagnosed, from the only run in the log, that
+the pipeline had no entry point for work that already exists — and fixed it by adding the
+"Joining a page that already exists" table to the body, behind the gate that was itself the
+reason such work never reached the skill. Today's edit added a sixth row to that same table and
+would have inherited the same fate.
+
+**The lesson, for the next revision of this or any skill:** a body fix and a routing fix are
+different repairs. When a use-log entry says the skill was not used, or was used for something
+its description does not name, the description is the defect — editing the instructions is
+treating a symptom. Check the description first whenever the log is thin.
+
+## v0.11 — 2026-09-16
+
+**Changed:** a sixth row in "Joining a page that already exists" for a live page to rebuild or
+port, pointing at a new [reference/funnel-source-anatomy.md](reference/funnel-source-anatomy.md).
+Also corrected the `verifying-landing-pages` check count in stage 6 and in
+[reference/skill-routing.md](reference/skill-routing.md) — both still said 26, which went stale
+at that skill's v0.2 and was wrong by eleven.
+
+**Why:** a funnel rebuild, where the source was a hosted builder's single-file HTML export. The
+extraction was worth an hour and none of it was guessable:
+
+- The copy is **not in the page.** Every string renders through `t("key")`; the table ships as
+  a separate i18n script. Grepping the HTML for a headline visible on screen returns nothing.
+- The flow is a `STEPS=[...]` array in the minified bundle — the authoritative order, unlike
+  the design board, which also held variants the shipped funnel never reaches.
+- There are **two** `:root{}` blocks. The first is the platform default; the second is the
+  funnel's override, and they disagreed on nearly every token. Taking the first yields a page
+  that is quietly the wrong brand throughout.
+- An asset manifest (`PS_PREFETCH`) lists images for screens you cannot reach without paying.
+
+None of that is recoverable by reasoning about the page — only by digging, twice, in the wrong
+places first. That is the test for what belongs in a reference file rather than being left to
+be re-derived. The desktop layout decisions from the same run were deliberately **not** written
+down: a competent pass reinvents a sticky pricing rail unaided, and a skill that documents the
+guessable parts alongside the unguessable ones buries the half that matters.
+
 ## v0.10 — 2026-09-14
 
 **Changed:** added a "Joining a page that already exists" table, and split stage 3's

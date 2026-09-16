@@ -20,7 +20,7 @@ skill you haven't used before, or when a named skill doesn't seem to exist.
 | 5 Build | `motion-design` + `gsap-*` | How motion should behave, and how to implement it — both, not one or the other |
 | 5 Build | `animate-text` | Named text effects: reveal, typewriter, stagger, counters, text swaps |
 | 5 Build | `shader-glsl` | GPU work only — shader backgrounds, distortion, image transitions |
-| 6 Verify | `verifying-landing-pages` | The 26 checks — build, visual, content integrity, i18n, deploy, handoff |
+| 6 Verify | `verifying-landing-pages` | The 37 checks — build, visual, content integrity, conversion path, i18n, deploy, handoff |
 | 6 Verify | `fixing-accessibility` | Contrast, ARIA, keyboard nav, focus management, form errors |
 | any | `artifact-design` | When a stage's deliverable is a *proposal to show*, not the final build |
 
