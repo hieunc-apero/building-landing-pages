@@ -123,12 +123,24 @@ will not look broken: a dead button renders exactly like a live one.
 
 ## Handoff
 - [ ] Every locked decision (brand token, deferred feature, "why not X") is written to the project's memory/HANDOFF.md, not left only in chat history — a different session or account needs to pick this up without re-deriving it
+- [ ] Append an entry to this skill's own [USELOG.md](USELOG.md) — including for a pass that found nothing. Record what the checklist **missed** before anyone else finds it; a miss remembered as someone else's catch never becomes a check here
 
 ## If something here fails
 
 Bisect until you can name the one line. The symptom is rarely the bug - a recurring "still
 shows the old logo" turned out to be a cache header, not a wrong file, and a page that "won't
 update" turned out to be serving a build that came from a local upload rather than any commit.
+
+## Maintaining this skill
+
+Two files, two purposes. [USELOG.md](USELOG.md) records what each pass caught and — the line
+that matters — what got through. [CHANGELOG.md](CHANGELOG.md) records changes to the checks
+themselves, and a change should cite the log entry that justified it.
+
+Additions are not free. Every check competes for attention with the one that would have caught
+the real bug, so a check earns its place by having fired, and a check that has run across
+several entries without ever firing is a candidate for deletion. One corroborating log entry
+before adding, not one good idea.
 
 ## Related
 

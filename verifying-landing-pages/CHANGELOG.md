@@ -1,5 +1,28 @@
 # Changelog
 
+## v0.6 - 2026-09-16
+
+**Changed:** added [USELOG.md](USELOG.md), a Handoff checkbox that requires an entry after every
+pass, and a "Maintaining this skill" section. 37 checks -> 38.
+
+**Why:** this skill was at v0.5 with 37 checks and **no record of ever having run**. Its sibling
+has a use log, and the one entry in it is what produced v0.10 through v0.13 over there — every
+substantive improvement to that skill traces to a logged run. This one had no such channel, so
+five versions of checks accumulated with nothing saying which of them had ever fired.
+
+The entry format here is deliberately not a copy of the sibling's. That one logs *stages
+reached*, which suits a pipeline. A checklist is improved by a different fact: **what got
+through**. The field is placed early in the template and called out in the file header, because
+it has a short half-life — a defect someone else catches is remembered as their find within a
+day, and stops feeling like a gap in this file at all.
+
+The log is seeded with the 2026-09-16 run, which is itself a non-invocation: the skill did not
+load, for the reason fixed in v0.5. That run produced v0.4 and v0.5 and left three further
+candidate checks — type traced to a design source rather than a screenshot, centring measured
+against a child's own container, and sub-pixel CSS values that round up at dpr 1. None were
+added. One pass is one data point, and adding three checks off it is how a checklist grows past
+the length anyone will actually read.
+
 ## v0.5 - 2026-09-16
 
 **Changed:** `description` — "a marketing site, landing page, or funnel".

@@ -33,7 +33,7 @@ is not a blocker either — say which stages will be weaker and carry on.
 | 3 | Brand | **First ask:** is there an existing Figma file, a `.pen` file, or any brand asset (logo, token doc, past brief) already? Don't assume — check the project's memory/HANDOFF for a prior brand decision too, a parallel session may have already locked one. If yes, pull tokens/fonts from that source directly (`figma:figma-design-to-code` if it's Figma) instead of re-brainstorming. Pull **tokens** — colour, type, spacing. Pulling someone else's **pixels** (screenshots, mockups, photography) is a licensing decision rather than a shortcut: write it in the brief as a decision with an owner and an expiry, and see the assets section of `verifying-landing-pages`. If no, brainstorm logo/token directions, present 2-3, confirm the direction before building the rest around it. | `ui-ux-pro-max` to pick the direction **before** committing; `svg-logo-designer` for the mark; `figma:figma-design-to-code` *(if the source is Figma)* |
 | 4 | Design brief | Write one locked brief file — positioning, the tokens pulled or brainstormed in stage 3, a reference-site table with a "take this one thing" column, anti-goals, motion rules, section-by-section spec. Re-issue as vN.N on every material change; never edit silently. Template: [reference/design-brief-template.md](reference/design-brief-template.md). | — |
 | 5 | Build | Visual tool (Pencil/Figma) for fast variants; hand-code (Next.js/HTML) once real interaction or motion is required — see the two-path note below. | `frontend-design` or `impeccable` for the UI; `ux-copy` for every string; `motion-design` + `gsap-*` for motion; `animate-text`, `shader-glsl` as needed. Read [reference/review-preferences.md](reference/review-preferences.md) **before** the first desktop layout, not after it comes back |
-| 6 | Verify | Non-negotiable before calling anything done. | **REQUIRED SUB-SKILL:** `verifying-landing-pages` (37 checks: build, visual, content, conversion, i18n, deploy, handoff); `fixing-accessibility` for the deeper ARIA/keyboard/focus pass; the "Before showing work" list in [reference/review-preferences.md](reference/review-preferences.md) |
+| 6 | Verify | Non-negotiable before calling anything done. | **REQUIRED SUB-SKILL:** `verifying-landing-pages` (38 checks: build, visual, content, conversion, i18n, deploy, handoff); `fixing-accessibility` for the deeper ARIA/keyboard/focus pass; the "Before showing work" list in [reference/review-preferences.md](reference/review-preferences.md) |
 | 7 | Deploy | git → gh repo → host git-integration → **prove the pipeline is live** by pushing one throwaway commit and confirming a new deploy appears — a green CLI exit is not proof. | — |
 | 8 | Handoff | Update the project's memory/HANDOFF.md after any stage that changes a locked decision — this is what lets a different session or account continue without re-deriving context. **Also append an entry to this skill's own [USELOG.md](USELOG.md)** — even for a partial or abandoned run. | — |
 
@@ -64,7 +64,7 @@ i18n is a variant of stage 5/6, not a separate stage: extract the string invento
 
 ## What gets work bounced
 
-The 37 checks in `verifying-landing-pages` catch broken. They do not catch
+The 38 checks in `verifying-landing-pages` catch broken. They do not catch
 *wrong for this reviewer* — and in the one long review cycle logged so far, that
 is what sent work back, round after round.
 

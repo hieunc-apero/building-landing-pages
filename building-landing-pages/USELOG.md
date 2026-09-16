@@ -14,5 +14,5 @@ One entry per real invocation of this skill — evidence for the next `writing-s
 **Gap found:** <what the skill didn't cover, or covered wrong — this is what should turn into the next CHANGELOG entry>
 ```
 
-*No entries yet. Append one at stage 8 of every run - including a partial or
-abandoned one. A run that stopped early is exactly the signal that reveals a gap.*
+*No entries yet. Append one after every run - including a partial or abandoned
+one. A run that stopped early is exactly the signal that reveals a gap.*
