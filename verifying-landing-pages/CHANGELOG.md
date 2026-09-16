@@ -1,5 +1,24 @@
 # Changelog
 
+## v0.7 - 2026-09-16
+
+**Changed:** the pre-flight asset assertion now guards on `getAttribute('src')`, with a note on
+why, and on why `src=""` differs from an absent `src`. No change to the check count.
+
+**Why:** the first real run of this skill (logged) ran its own opening snippet against a live
+page and got two hits on a page with nothing wrong. `[...document.images].filter(i =>
+!i.naturalWidth)` cannot distinguish "declared a source and it failed to load" from "has no
+source yet" — both report `complete === true` and `naturalWidth === 0`. Any page that
+pre-declares image buffers, which the audited page does for a cross-fade, fails an assertion
+this file states "must return []".
+
+A check that cries wolf is worse than no check: the reader stops trusting the one line that is
+supposed to gate every other check in the file.
+
+The same run also showed that `src=""` and a missing `src` are different defects — the empty
+value resolves against the document URL and re-downloads the page as an image — so the note
+covers both.
+
 ## v0.6 - 2026-09-16
 
 **Changed:** added [USELOG.md](USELOG.md), a Handoff checkbox that requires an entry after every

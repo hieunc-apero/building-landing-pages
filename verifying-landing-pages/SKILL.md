@@ -28,9 +28,17 @@ Serve it over HTTP from its own directory, then assert the assets arrived before
 anything else:
 
 ```js
-[...document.images].filter(i => !i.naturalWidth).map(i => i.getAttribute('src'))
+[...document.images]
+  .filter(i => i.getAttribute('src') && !i.naturalWidth)
+  .map(i => i.getAttribute('src'))
 // must return []
 ```
+
+The `getAttribute('src')` guard is load-bearing. An `<img>` with no `src` — a buffer the page
+fills in later, a lazy slot — also reports `complete === true` and `naturalWidth === 0`, so
+without it the assertion fails on a page where nothing is wrong, and you learn to ignore it.
+Note also that `src=""` is not the same as no `src`: an empty value resolves against the
+document URL, so the browser re-downloads the page itself as if it were an image.
 
 ## Code correctness
 - [ ] Typecheck / build passes clean (`tsc --noEmit`, `next build`, etc.)
