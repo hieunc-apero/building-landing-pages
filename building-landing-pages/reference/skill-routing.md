@@ -1,14 +1,15 @@
 # Skill Routing
 
 Which skill to reach for at each stage of [SKILL.md](../SKILL.md), what each one is actually
-for, and the install traps that make a skill silently absent. Read this when a stage names a
-skill you haven't used before, or when a named skill doesn't seem to exist.
+for, and the two routing traps that keep a stage's skill from running. Read this when a stage
+names a skill you haven't used before, when a named skill doesn't seem to exist, or when a skill
+you know is installed never seems to fire.
 
 ## By stage
 
 | Stage | Skill | For |
 |---|---|---|
-| 1 Research | `extract-design-system` | Pull a competitor's real tokens off their site instead of eyeballing them |
+| 1 Research | `extract-design-system` | Pull real tokens off a live page instead of eyeballing them — a competitor's site, **or the page you are rebuilding**. Invoke it **by name**: its description says "a public website", so a funnel, an app flow or your own in-house page will not trigger it on their own |
 | 1 Research | `competitor-analysis` | Mobile apps only — the ASO/keyword/store layer, not the visual teardown |
 | 2 Structure | `brainstorming` | Turn research into an approved structure before anything gets built |
 | 2 Structure | `site-architecture` | Page hierarchy, URL structure, navigation, internal linking — deeper than doing it inline |
@@ -28,6 +29,32 @@ skill you haven't used before, or when a named skill doesn't seem to exist.
 party. Call them all by name — do not copy their content into this skill. They update independently of
 it, and one of them (`impeccable`) is ~40 files on its own.
 
+## A skill that is installed, global, and still never fires
+
+The scope trap below is the loud failure — the skill is genuinely absent. The quiet one is a
+skill that is present, correctly installed, and simply never *selected*, because selection reads
+only the `description`. However well the body handles a case, if that one sentence does not name
+it, the case never arrives.
+
+This skill was the worst offender on this machine: eleven revisions against **one** logged run,
+because its own description said "from scratch … from research and brand through build" and most
+real work is neither. Fixed in v0.12 — one line of frontmatter, nothing in the body.
+
+One is still live, because it is third party. `extract-design-system` reads "Extract design
+primitives from **a public website**". Pulling tokens off a multi-step funnel, an app flow or
+your own in-house page is the same operation and matches none of those words. On the run logged
+for 2026-09-16 the tokens were re-derived by hand with `grep` while the skill sat installed,
+global, and unused.
+
+Editing a third-party description does not survive — `update-skills.ps1` reinstalls over it
+(`npx skills add … -y`). Route around it from the table above instead; that is what the
+"invoke by name" note is for.
+
+**The check, whenever a skill seems never to be used:** read its `description` against the last
+three jobs it should have caught. If a job does not obviously match the words in that single
+sentence, the description is the defect — not the instructions, and not the model. A thin
+[USELOG.md](../USELOG.md) is the symptom that sends you here.
+
 ## A named skill that "doesn't exist" is usually installed in the wrong scope
 
 Everything above except `artifact-design` (harness-provided) and `figma:figma-design-to-code`
@@ -38,7 +65,7 @@ warning. The stage just quietly gets done by hand and nobody notices.
 This has bitten three times on one machine: `ux-copy` (v0.3), `svg-logo-designer` and
 `motion-design` (v0.5).
 
-**Trap 1 — the installer defaults to the wrong scope.** `npx skills add <pkg> -y` auto-detects
+**Cause 1 — the installer defaults to the wrong scope.** `npx skills add <pkg> -y` auto-detects
 scope and picks *project* whenever the working directory sits inside one. A bare git repo
 counts: run `npx skills ls` in a directory that has nothing but `git init` and it answers
 "No project skills found". Always pass `-g` explicitly.
@@ -47,7 +74,7 @@ counts: run `npx skills ls` in a directory that has nothing but `git init` and i
 npx skills add <owner>/<repo>@<skill> -g -y
 ```
 
-**Trap 2 — the selector is the frontmatter name, not the folder name.** What follows `@` is
+**Cause 2 — the selector is the frontmatter name, not the folder name.** What follows `@` is
 matched against the skill's `name:` field. For `rknall/claude-skills` that is
 `SVG Logo Designer`, not `svg-logo-designer` — and on a mismatch the CLI prints the repo's
 skill list, installs nothing, and exits 0.

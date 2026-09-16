@@ -2,6 +2,30 @@
 
 History of `SKILL.md` itself and this skill's own portability. One entry per change to the skill's instructions — append here whenever the pipeline, a stage's checklist, or a cross-referenced skill changes. Not a log of projects built with the skill — see [USELOG.md](USELOG.md) for that.
 
+## v0.13 — 2026-09-16
+
+**Changed:** [reference/skill-routing.md](reference/skill-routing.md) gains a second routing
+trap — a skill that is installed, global, and still never selected because its `description`
+doesn't name the case. The stage-1 row for `extract-design-system` now says to invoke it by name
+and why.
+
+**Why:** the v0.12 fix prompted a sweep of all 124 installed skills for the same defect. Thirty-
+four flagged on a keyword pass; thirty-one were noise — a linting skill says "fix" a lot, a TDD
+skill says "test" a lot, and neither is mis-gated. Three survived reading, and only one sits in
+this pipeline:
+
+`extract-design-system` is described as extracting "from a public website". Pulling tokens off a
+funnel, an app flow or an in-house page is the identical operation and matches none of those
+words, so on the 2026-09-16 run it was never reached for and the tokens were re-derived by hand.
+
+The rest of the library is well gated — 121 of 124 — which is the useful half of the result: the
+description defect this skill had was an outlier, not a systemic problem, and the sweep was worth
+running precisely because it bounded the problem instead of assuming it.
+
+The trap is recorded here rather than fixed at the source because `extract-design-system` is
+third party and `update-skills.ps1` reinstalls over local edits. A routing note in a file this
+skill owns survives; an edit to someone else's frontmatter does not.
+
 ## v0.12 — 2026-09-16
 
 **Changed:** the `description`. It now covers reworking an existing page, names the funnel case,
