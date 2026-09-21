@@ -1,6 +1,8 @@
 ---
 name: building-landing-pages
 description: Use when building or reworking a marketing site, landing page, or multi-step funnel — a new product launch page, an app landing page, a company site, or one that already exists and needs auditing, restyling, porting to another breakpoint, or shipping. Covers research, brand, build, QA, and deploy, entered at whichever stage the work actually starts.
+argument-hint: "[project directory, site name, or url]"
+user-invocable: true
 ---
 
 # Building Landing Pages

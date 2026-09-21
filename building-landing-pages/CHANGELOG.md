@@ -2,6 +2,30 @@
 
 History of `SKILL.md` itself and this skill's own portability. One entry per change to the skill's instructions — append here whenever the pipeline, a stage's checklist, or a cross-referenced skill changes. Not a log of projects built with the skill — see [USELOG.md](USELOG.md) for that.
 
+## v0.14 — 2026-09-21
+
+**Changed:** added `user-invocable: true` and an `argument-hint` to the frontmatter, so the
+skill can be started by typing its name as a slash command instead of only by description
+match or by being named in a sentence.
+
+**Why:** asked how to invoke it, and the honest answer was that the most direct route did not
+exist. Of 35 skills installed on the authoring machine only one declared the field, so the
+omission read as a default rather than a decision.
+
+Note that neither field is part of the Agent Skills specification — that defines `name`,
+`description`, `license`, `compatibility`, `metadata` and `allowed-tools`, and nothing else.
+Both are client extensions. They are carried by skills published for the same client, so the
+risk is low, but a strict validator run against the spec may flag them as unknown keys, and a
+client that does not implement them simply ignores them and leaves invocation as it was.
+
+Invocation is now, in order of directness:
+
+```
+/building-landing-pages [project directory, site name, or url]
+```
+
+naming the skill in a sentence, or letting the description match the task on its own.
+
 ## v0.13 — 2026-09-16
 
 **Changed:** [reference/skill-routing.md](reference/skill-routing.md) gains a second routing

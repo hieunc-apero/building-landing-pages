@@ -1,5 +1,29 @@
 # Changelog
 
+## v0.8 - 2026-09-21
+
+**Changed:** added `user-invocable: true` and an `argument-hint` to the frontmatter, so the
+skill can be started by typing its name as a slash command instead of only by description
+match or by being named in a sentence.
+
+**Why:** asked how to invoke it, and the honest answer was that the most direct route did not
+exist. Of 35 skills installed on the authoring machine only one declared the field, so the
+omission read as a default rather than a decision.
+
+Note that neither field is part of the Agent Skills specification — that defines `name`,
+`description`, `license`, `compatibility`, `metadata` and `allowed-tools`, and nothing else.
+Both are client extensions. They are carried by skills published for the same client, so the
+risk is low, but a strict validator run against the spec may flag them as unknown keys, and a
+client that does not implement them simply ignores them and leaves invocation as it was.
+
+Invocation is now, in order of directness:
+
+```
+/verifying-landing-pages [url of the running page]
+```
+
+naming the skill in a sentence, or letting the description match the task on its own.
+
 ## v0.7 - 2026-09-16
 
 **Changed:** the pre-flight asset assertion now guards on `getAttribute('src')`, with a note on

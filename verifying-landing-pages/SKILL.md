@@ -1,6 +1,8 @@
 ---
 name: verifying-landing-pages
 description: Use when a marketing site, landing page, or funnel is about to be called done, merged, or shipped - including before claiming that a build passes, a locale is complete, a deploy is live, or a visual change renders the way the code reads.
+argument-hint: "[url of the running page]"
+user-invocable: true
 ---
 
 # Verifying Landing Pages
