@@ -13,10 +13,11 @@ you know is installed never seems to fire.
 | 1 Research | `competitor-analysis` | Mobile apps only — the ASO/keyword/store layer, not the visual teardown |
 | 2 Structure | `brainstorming` | Turn research into an approved structure before anything gets built |
 | 2 Structure | `site-architecture` | Page hierarchy, URL structure, navigation, internal linking — deeper than doing it inline |
-| 3 Brand | `ui-ux-pro-max` | Choose the direction: style family, palette, type pairing |
+| 3 Brand | `design-taste-frontend` | Deal the direction: idea, composition, type, palette — or `impeccable`'s direction roll when there is no brand at all |
+| 3 Brand | `ui-ux-pro-max` | Only to check a font covers the page's script (Vietnamese) — not for direction |
 | 3 Brand | `svg-logo-designer` | The mark itself — variations, layouts, PNG export |
 | 3 Brand | `figma:figma-design-to-code` | Only when an existing Figma source has to be read |
-| 5 Build | `frontend-design` / `impeccable` | The interface craft — see the phase rule in SKILL.md |
+| 5 Build | `design-taste-frontend` / `impeccable` | The interface craft — see the phase rule in SKILL.md |
 | 5 Build | `ux-copy` | **Every** piece of interface text, automatically: CTAs, errors, empty states, tooltips, even spellchecks |
 | 5 Build | `motion-design` + `gsap-*` | How motion should behave, and how to implement it — both, not one or the other |
 | 5 Build | `animate-text` | Named text effects: reveal, typewriter, stagger, counters, text swaps |

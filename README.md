@@ -64,7 +64,7 @@ less useful.
 ```bash
 npx skills add hieunc-apero/building-landing-pages@verifying-landing-pages -g -y  # stage 6
 npx skills add obra/superpowers -s brainstorming -g -y
-npx skills add anthropics/skills@frontend-design -g -y
+npx skills add Leonxlnx/taste-skill@design-taste-frontend -g -y
 npx skills add anthropics/knowledge-work-plugins@ux-copy -g -y
 ```
 
@@ -72,8 +72,7 @@ npx skills add anthropics/knowledge-work-plugins@ux-copy -g -y
 
 ```bash
 npx skills add coreyhaines31/marketingskills@site-architecture -g -y      # stage 2, hierarchy + URLs + nav
-npx skills add nextlevelbuilder/ui-ux-pro-max-skill@ui-ux-pro-max -g -y   # stage 3, pick a direction
-npx skills add pbakaus/impeccable@impeccable -g -y                        # stage 5, audit an existing UI
+npx skills add pbakaus/impeccable@impeccable -g -y                        # stages 3+5, a new visual world; refine an existing UI
 npx skills add ibelick/ui-skills@fixing-accessibility -g -y               # stage 6, deeper a11y pass
 npx skills add arvindrk/extract-design-system@extract-design-system -g -y # stage 1, competitor tokens
 ```

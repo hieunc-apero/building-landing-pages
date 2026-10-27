@@ -2,6 +2,22 @@
 
 History of `SKILL.md` itself and this skill's own portability. One entry per change to the skill's instructions — append here whenever the pipeline, a stage's checklist, or a cross-referenced skill changes. Not a log of projects built with the skill — see [USELOG.md](USELOG.md) for that.
 
+## v0.15 — 2026-10-27
+
+**Changed:** stage 3 deals the direction with `design-taste-frontend` (or `impeccable`'s direction
+roll when there is no brand yet) instead of `ui-ux-pro-max`; stage 5 builds with
+`design-taste-frontend` or `impeccable` instead of `frontend-design`. "Picking between the UI
+skills" rewritten around those two, with the brand winning over either skill's bans.
+`ui-ux-pro-max` stays for one thing: checking a font covers the page's script. `skill-routing.md`,
+the README and both installers follow (`frontend-design` → `design-taste-frontend` in Required;
+`ui-ux-pro-max` dropped from Recommended).
+
+**Why:** the same briefs — a branded purchase page, a brand-new shop home page, an app day view —
+were built once per skill. `frontend-design` read thin and `ui-ux-pro-max` proposed off-subject
+palettes and patterns (emerald and orange for a coffee roastery, a landing pattern for an app
+screen); `design-taste-frontend` and `impeccable` produced distinct, subject-specific directions.
+The maintainer reached the same verdict looking at them.
+
 ## v0.14 — 2026-09-21
 
 **Changed:** added `user-invocable: true` and an `argument-hint` to the frontmatter, so the
