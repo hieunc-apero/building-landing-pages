@@ -23,12 +23,11 @@ $skill = 'hieunc-apero/building-landing-pages@building-landing-pages'
 $reqSkills = @(
     @{ pkg = 'hieunc-apero/building-landing-pages@verifying-landing-pages'; flags = @(); why = 'the 26 pre-launch checks (stage 6)' },
     @{ pkg = 'obra/superpowers'; flags = @('-s', 'brainstorming'); why = 'structure work before building (stage 2)' },
-    @{ pkg = 'Leonxlnx/taste-skill@design-taste-frontend'; flags = @(); why = 'deal a direction, build a page from blank (stages 3+5)' },
+    @{ pkg = 'pbakaus/impeccable@impeccable'; flags = @(); why = 'direction, build and polish (stages 3+5)' },
     @{ pkg = 'anthropics/knowledge-work-plugins@ux-copy'; flags = @(); why = 'every string on the page (stage 5)' }
 )
 $recSkills = @(
     @{ pkg = 'coreyhaines31/marketingskills@site-architecture'; flags = @(); why = 'hierarchy, URLs, navigation (stage 2)' },
-    @{ pkg = 'pbakaus/impeccable@impeccable'; flags = @(); why = 'a new visual world; refine an interface that exists (stages 3+5)' },
     @{ pkg = 'ibelick/ui-skills@fixing-accessibility'; flags = @(); why = 'contrast, ARIA, keyboard, focus (stage 6)' },
     @{ pkg = 'arvindrk/extract-design-system@extract-design-system'; flags = @(); why = 'competitor tokens (stage 1)' }
 )

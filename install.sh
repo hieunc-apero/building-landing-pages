@@ -31,12 +31,11 @@ CHECKS="hieunc-apero/building-landing-pages@verifying-landing-pages"
 REQUIRED=(
   "hieunc-apero/building-landing-pages@verifying-landing-pages||the 26 pre-launch checks (stage 6)"
   "obra/superpowers|-s brainstorming|structure work before building (stage 2)"
-  "Leonxlnx/taste-skill@design-taste-frontend||deal a direction, build a page from blank (stages 3+5)"
+  "pbakaus/impeccable@impeccable||direction, build and polish (stages 3+5)"
   "anthropics/knowledge-work-plugins@ux-copy||every string on the page (stage 5)"
 )
 RECOMMENDED=(
   "coreyhaines31/marketingskills@site-architecture||hierarchy, URLs, navigation (stage 2)"
-  "pbakaus/impeccable@impeccable||a new visual world; refine an interface that exists (stages 3+5)"
   "ibelick/ui-skills@fixing-accessibility||contrast, ARIA, keyboard, focus (stage 6)"
   "arvindrk/extract-design-system@extract-design-system||competitor tokens (stage 1)"
 )

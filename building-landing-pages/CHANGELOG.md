@@ -2,6 +2,16 @@
 
 History of `SKILL.md` itself and this skill's own portability. One entry per change to the skill's instructions — append here whenever the pipeline, a stage's checklist, or a cross-referenced skill changes. Not a log of projects built with the skill — see [USELOG.md](USELOG.md) for that.
 
+## v0.16 — 2026-10-27
+
+**Changed:** `impeccable` is the one UI skill for stages 3 and 5 — direction, build and polish —
+with or without a brand. `design-taste-frontend` leaves this skill (it stays for product screens
+elsewhere). "Picking between the UI skills" and `skill-routing.md` rewritten to match; README and
+installers move `impeccable` to Required and drop `design-taste-frontend`.
+
+**Why:** the maintainer's call, a day after v0.15: landing pages and funnels are pages that
+persuade, and `impeccable`'s Persuade mode won the only persuade brief in the comparison.
+
 ## v0.15 — 2026-10-27
 
 **Changed:** stage 3 deals the direction with `design-taste-frontend` (or `impeccable`'s direction

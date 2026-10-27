@@ -32,9 +32,9 @@ is not a blocker either — say which stages will be weaker and carry on.
 |---|---|---|---|
 | 1 | Research | Market + 3-5 direct competitor sites. WebFetch only reads text — for real visual reference, screenshot with a headless browser (Puppeteer/PowerShell) or read a Figma source directly. | `extract-design-system`; `competitor-analysis` *(mobile apps only)* |
 | 2 | Structure | Turn research into a page structure before touching a design tool. | **REQUIRED SUB-SKILL:** `brainstorming`; then `site-architecture` for page hierarchy, URLs, nav and internal linking — it goes deeper than doing it inline |
-| 3 | Brand | **First ask:** is there an existing Figma file, a `.pen` file, or any brand asset (logo, token doc, past brief) already? Don't assume — check the project's memory/HANDOFF for a prior brand decision too, a parallel session may have already locked one. If yes, pull tokens/fonts from that source directly (`figma:figma-design-to-code` if it's Figma) instead of re-brainstorming. Pull **tokens** — colour, type, spacing. Pulling someone else's **pixels** (screenshots, mockups, photography) is a licensing decision rather than a shortcut: write it in the brief as a decision with an owner and an expiry, and see the assets section of `verifying-landing-pages`. If no, brainstorm logo/token directions, present 2-3, confirm the direction before building the rest around it. | `design-taste-frontend` to deal the direction **before** committing (or `impeccable` when no brand exists yet and the page needs its own visual world); `ui-ux-pro-max` only to check a font has Vietnamese/the page's script; `svg-logo-designer` for the mark; `figma:figma-design-to-code` *(if the source is Figma)* |
+| 3 | Brand | **First ask:** is there an existing Figma file, a `.pen` file, or any brand asset (logo, token doc, past brief) already? Don't assume — check the project's memory/HANDOFF for a prior brand decision too, a parallel session may have already locked one. If yes, pull tokens/fonts from that source directly (`figma:figma-design-to-code` if it's Figma) instead of re-brainstorming. Pull **tokens** — colour, type, spacing. Pulling someone else's **pixels** (screenshots, mockups, photography) is a licensing decision rather than a shortcut: write it in the brief as a decision with an owner and an expiry, and see the assets section of `verifying-landing-pages`. If no, brainstorm logo/token directions, present 2-3, confirm the direction before building the rest around it. | `impeccable` to set the direction **before** committing (its direction roll when no brand exists yet); `ui-ux-pro-max` only to check a font has Vietnamese/the page's script; `svg-logo-designer` for the mark; `figma:figma-design-to-code` *(if the source is Figma)* |
 | 4 | Design brief | Write one locked brief file — positioning, the tokens pulled or brainstormed in stage 3, a reference-site table with a "take this one thing" column, anti-goals, motion rules, section-by-section spec. Re-issue as vN.N on every material change; never edit silently. Template: [reference/design-brief-template.md](reference/design-brief-template.md). | — |
-| 5 | Build | Visual tool (Pencil/Figma) for fast variants; hand-code (Next.js/HTML) once real interaction or motion is required — see the two-path note below. | `design-taste-frontend` or `impeccable` for the UI; `ux-copy` for every string; `motion-design` + `gsap-*` for motion; `animate-text`, `shader-glsl` as needed. Read [reference/review-preferences.md](reference/review-preferences.md) **before** the first desktop layout, not after it comes back |
+| 5 | Build | Visual tool (Pencil/Figma) for fast variants; hand-code (Next.js/HTML) once real interaction or motion is required — see the two-path note below. | `impeccable` for the UI; `ux-copy` for every string; `motion-design` + `gsap-*` for motion; `animate-text`, `shader-glsl` as needed. Read [reference/review-preferences.md](reference/review-preferences.md) **before** the first desktop layout, not after it comes back |
 | 6 | Verify | Non-negotiable before calling anything done. | **REQUIRED SUB-SKILL:** `verifying-landing-pages` (38 checks: build, visual, content, conversion, i18n, deploy, handoff); `fixing-accessibility` for the deeper ARIA/keyboard/focus pass; the "Before showing work" list in [reference/review-preferences.md](reference/review-preferences.md) |
 | 7 | Deploy | git → gh repo → host git-integration → **prove the pipeline is live** by pushing one throwaway commit and confirming a new deploy appears — a green CLI exit is not proof. | — |
 | 8 | Handoff | Update the project's memory/HANDOFF.md after any stage that changes a locked decision — this is what lets a different session or account continue without re-deriving context. **Also append an entry to this skill's own [USELOG.md](USELOG.md)** — even for a partial or abandoned run. | — |
@@ -82,21 +82,20 @@ rebuilding rather than checking.
 
 ## Picking between the UI skills
 
-`design-taste-frontend` and `impeccable` both self-select on the same "make the UI" request,
-so pick by *phase*, not by preference:
+Landing pages and funnels are pages that persuade, so the UI skill is `impeccable`, from blank
+page to polish:
 
 ```
-brainstorming  →  design-taste-frontend  →  impeccable
- (structure)      (deal a direction,          (refine, audit, polish an
-                   build a blank page)         interface that exists)
+brainstorming  →  impeccable
+ (structure)      (direction roll for a new world, build, then refine / audit / polish)
 ```
 
-Blank page means `design-taste-frontend`: it deals a researched direction and measures the result
-with its own inspector. An interface that already exists and needs to get better means
-`impeccable` — and so does a brand-new page with no brand at all, where its direction roll gave
-the most subject-specific worlds. Whatever either skill bans (violet, gradients, a typeface), a
-brand that pins it wins. Use their measuring scripts; leave their own critique, live and hook
-modes alone when another reviewer judges the work.
+It covers both phases: a blank page gets its Persuade mode and, with no brand yet, its direction
+roll; an existing page gets the refine path, which keeps the incumbent identity. Whatever it bans
+(a typeface, a glow, a palette), a brand that pins it wins. Use its measuring script
+(`impeccable detect`); leave its own critique, live and hook modes alone when another reviewer
+judges the work. `design-taste-frontend` is for product screens (dashboards, settings), not
+marketing pages.
 
 `frontend-design` and `ui-ux-pro-max` are not used for direction any more: built side by side from
 the same briefs, they gave templated or off-subject palettes and patterns. `ui-ux-pro-max`'s
